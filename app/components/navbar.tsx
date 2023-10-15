@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from "next/link"
+import Dropdown from "./dropdown"
 
 import FaceIcon from '@material-symbols/svg-400/outlined/face-fill.svg';
 import CartIcon from '@material-symbols/svg-400/outlined/shopping_cart-fill.svg';
@@ -17,7 +18,6 @@ const navigation = [
 ]
 
 export default function Navbar() {
-    const [openDropdown, setOpenDropdown] = useState(false)
     const [openMobile, setOpenMobile] = useState(false)
 
     return (
@@ -65,27 +65,9 @@ export default function Navbar() {
                             <span className="sr-only">View cart</span>
                             <CartIcon width={40} height={40} className="fill-gray-800 group-hover:fill-cyan-300" />
                         </button>
-                        <div className="relative ml-3">
-                            <div>
-                                <button type="button"
-                                    onClick={() => setOpenDropdown(!openDropdown)}
-                                    className="relative flex rounded-full text-sm group"
-                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                    <span className="absolute -inset-1.5"></span>
-                                    <span className="sr-only">Open user menu</span>
-                                    <FaceIcon width={40} height={40} className="fill-gray-800 group-hover:fill-cyan-300" />
-                                </button>
-                            </div>
-                            <div className={
-                                (openDropdown && "transform opacity-100 scale-100" || "transform opacity-0 scale-95") +
-                                " absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition ease-in-out duration-100"
-                            }
-                                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex={-1}>
-                                <Link href="#" className="block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="user-menu-item-0">Your Profile</Link>
-                                <Link href="#" className="block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="user-menu-item-1">Settings</Link>
-                                <Link href="#" className="block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="user-menu-item-2">Sign out</Link>
-                            </div>
-                        </div>
+                        <Dropdown navigation={navigation}>
+                            <FaceIcon width={40} height={40} className="fill-gray-800 group-hover:fill-cyan-300" />
+                        </Dropdown>
                     </div>
                 </div>
             </div>

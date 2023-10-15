@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import Link from "next/link"
 import Close from '@material-symbols/svg-400/outlined/close.svg';
 
@@ -19,7 +19,7 @@ export default function Topbar() {
                                     onClick={() => setOpen(false)}>
                                     <span className="absolute -inset-2.5"></span>
                                     <span className="sr-only">Close panel</span>
-                                    <Close width={20} height={20} className="fill-gray-300 group-hover:fill-gray-500" />
+                                    <Close width={25} height={25} className="fill-gray-300 group-hover:fill-gray-500" />
                                 </button>
                             </div>
                             <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
