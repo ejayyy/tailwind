@@ -8,17 +8,7 @@ export default function Topbar() {
 
     return (
         <div className="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-            {/*  <!--
-            Background backdrop, show/hide based on slide-over state.
-
-            Entering: "ease-in-out duration-500"
-            From: "opacity-0"
-            To: "opacity-100"
-            Leaving: "ease-in-out duration-500"
-            From: "opacity-100"
-            To: "opacity-0" */}
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
+            <div className={(open && "opacity-100" || "opacity-0") + " fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity ease-in-out duration-500"}></div>
             <div className="fixed inset-0 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -40,8 +30,9 @@ export default function Topbar() {
                             Leaving: "ease-in-out duration-500"
                             From: "opacity-100"
                             To: "opacity-0" */}
-                            <div className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
-                                <button type="button" className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                            <div className="absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+                                <button type="button" className="relative rounded-md text-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+                                    onClick={() => setOpen(false)}>
                                     <span className="absolute -inset-2.5"></span>
                                     <span className="sr-only">Close panel</span>
                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
