@@ -12,25 +12,8 @@ export default function Topbar() {
             <div className="fixed inset-0 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                        {/* 
-                        Slide-over panel, show/hide based on slide-over state.
-
-                        Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-                        From: "translate-x-full"
-                        To: "translate-x-0"
-                        Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-                        From: "translate-x-0"
-                        To: "translate-x-full" */}
-                        <div className="pointer-events-auto relative w-screen max-w-md">
-                            {/* Close button, show/hide based on slide-over state.
-
-                            Entering: "ease-in-out duration-500"
-                            From: "opacity-0"
-                            To: "opacity-100"
-                            Leaving: "ease-in-out duration-500"
-                            From: "opacity-100"
-                            To: "opacity-0" */}
-                            <div className="absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
+                        <div className={(open && "translate-x-0" || "translate-x-full") + " pointer-events-auto relative w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700"}>
+                            <div className={(open && "opacity-100" || "opacity-0") + " absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4 ease-in-out duration-500"}>
                                 <button type="button" className="relative rounded-md text-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
                                     onClick={() => setOpen(false)}>
                                     <span className="absolute -inset-2.5"></span>
